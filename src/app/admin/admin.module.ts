@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QrCodeModule } from 'ng-qrcode';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     QrCodeModule,
+    NgxMaterialTimepickerModule,
   ],
   declarations: [AdminPage, DashboardComponent],
 })

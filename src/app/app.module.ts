@@ -61,6 +61,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxMatDatetimePickerModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

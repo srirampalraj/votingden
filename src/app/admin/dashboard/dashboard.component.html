@@ -63,22 +63,37 @@
         <div fxLayout="row" fxLayoutGap="20px">
           <div fxLayout="column" fxLayoutAlign="center center">
             <div>Start Time</div>
-            <div class="h5rem">
-              <ion-datetime
-                presentation="time"
-                formControlName="start"
-                locale="en-IN"
-              ></ion-datetime>
+            <div>
+              <ion-item>
+                <input
+                  aria-label="default time"
+                  [ngxTimepicker]="defaultValue"
+                  formControlName="start"
+                  readonly
+                  class="wh"
+                  [value]="form.value.start"
+                />
+                <ngx-material-timepicker
+                  #defaultValue
+                ></ngx-material-timepicker>
+              </ion-item>
             </div>
           </div>
           <div fxLayout="column" fxLayoutAlign="center center">
             <div>End Time</div>
-            <div class="h5rem">
-              <ion-datetime
-                presentation="time"
-                formControlName="end"
-                locale="en-IN"
-              ></ion-datetime>
+            <div>
+              <ion-item>
+                <input
+                  aria-label="default time 2"
+                  [ngxTimepicker]="defaultValue2"
+                  readonly
+                  clsss="wh"
+                  formControlName="end"
+                />
+                <ngx-material-timepicker
+                  #defaultValue2
+                ></ngx-material-timepicker>
+              </ion-item>
             </div>
           </div>
         </div>

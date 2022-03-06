@@ -1,3 +1,4 @@
+<div *ngIf="loading"></div>
 <ion-content>
   <div
     style="padding: 2rem; margin: 1rem; background: white"
@@ -87,13 +88,14 @@
     <button
       mat-raised-button
       type="submit"
+      [disabled]="addUserForm.invalid"
       (click)="log(addUserForm.value, photo)"
     >
       Submit
     </button>
   </div>
 </ion-content>
-<!-- [disabled]="addUserForm.invalid" -->
+
 <!-- 1.Photo
 2.Full Name
 3.Aadhar No.

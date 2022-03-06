@@ -15,6 +15,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { catchError, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupAuthComponent } from 'src/app/shared/components/popup-auth/popup-auth.component';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 export class FileUpload {
   key: string;
@@ -42,12 +44,15 @@ export class AddUserComponent implements OnInit {
   task: AngularFireUploadTask;
   progressValue: Observable<number>;
   eventPic: any;
+  loading: boolean;
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private storage: AngularFireStorage,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastController: ToastController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -71,7 +76,6 @@ export class AddUserComponent implements OnInit {
 
   log(log, photo) {
     this.openDialog();
-    // this.onFileChanged(this.eventPic);
   }
 
   async onFileChanged(event) {
@@ -97,6 +101,9 @@ export class AddUserComponent implements OnInit {
         this.addUserForm.updateValueAndValidity();
         console.log(this.addUserForm);
         this.auth.setVoterData(this.addUserForm.value);
+        this.loading = false;
+        this.presentToast('Voter added !');
+        this.router.navigate(['/tabs']);
       }
     });
   }
@@ -107,7 +114,18 @@ export class AddUserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      if (result === 'success') {
+        this.loading = true;
+        this.onFileChanged(this.eventPic);
+      }
     });
+  }
+
+  async presentToast(mes) {
+    const toast = await this.toastController.create({
+      message: mes,
+      duration: 2000,
+    });
+    toast.present();
   }
 }

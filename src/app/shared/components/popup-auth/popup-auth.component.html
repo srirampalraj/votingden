@@ -4,12 +4,13 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Auth code</mat-label>
       <input [(ngModel)]="authCode" cdkFocusInitial matInput mask="000 000" />
+      <mat-error *ngIf="error">Invalid key</mat-error>
     </mat-form-field>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
-  <button mat-button mat-dialog-close>Cancel</button>
+<div fxLayout="row" fxLayoutAlign="end end">
+  <button mat-button mat-dialog-close (click)="cancel()">Cancel</button>
   <button mat-button [disabled]="authCode.length !== 6" (click)="checkCode()">
-    Install
+    Validate
   </button>
-</mat-dialog-actions>
+</div>

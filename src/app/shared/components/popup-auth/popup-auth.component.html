@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Please enter 6 digit your auth code</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Auth code</mat-label>
+      <input [(ngModel)]="authCode" cdkFocusInitial matInput mask="000 000" />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="false"
+    [disabled]="authCode.length !== 6"
+    (click)="checkCode()"
+  >
+    Install
+  </button>
+</mat-dialog-actions>

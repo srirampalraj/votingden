@@ -1,0 +1,31 @@
+<div class="w100 h100" fxLayout="row" fxLayoutAlign="center center">
+  <div class="w100 h100" fxLayout="row" fxLayoutAlign="center center">
+    <div class="container">
+      <div class="header">
+        <h2>Log in securely</h2>
+      </div>
+      <form
+        id="form"
+        class="form"
+        [formGroup]="profileForm"
+        (ngSubmit)="SignIn()"
+      >
+        <div class="form-control">
+          <label for="username">Email</label>
+          <input type="email" id="email" formControlName="email" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="username">Password</label>
+          <input type="password" id="password" formControlName="password" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <button [disabled]="profileForm?.invalid" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

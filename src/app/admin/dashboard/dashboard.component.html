@@ -1,0 +1,95 @@
+<ion-content>
+  <div>
+    <div style="padding: '2rem'" fxLayout="column" fxLayoutAlign="start center">
+      <div class="card">
+        <div fxLayout="row" fxLayoutGap="2rem">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div class="wh">Agent</div>
+            <div>
+              <qr-code
+                value="otpauth://totp/ForAgent?secret=GEZDGNBVGY3TQQSYLFKA&issuer=Voter%20Site"
+                size="150"
+                errorCorrectionLevel="M"
+              ></qr-code>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div class="wh">Voter</div>
+            <div>
+              <qr-code
+                value="otpauth://totp/ForVoter?secret=GEZDGNBVGY3TQQKBKNJQ&issuer=Voter%20Site"
+                size="150"
+                errorCorrectionLevel="M"
+              ></qr-code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div> -->
+    <ion-content
+      fxLayoutAlign="center center"
+      fxLayout="column"
+      style="overflow: visible"
+    >
+      <div
+        style="width: 100%"
+        fxLayoutAlign="center center"
+        fxLayout="column"
+        [formGroup]="form"
+      >
+        <div>
+          <ion-item>
+            <ion-input [value]="form.value.date"></ion-input>
+            <ion-button fill="clear" id="open-date-input-2">
+              <ion-icon icon="calendar"></ion-icon>
+            </ion-button>
+            <ion-popover trigger="open-date-input-2" show-backdrop="false">
+              <ng-template>
+                <ion-datetime
+                  [min]="now"
+                  title="Election date"
+                  #popoverDatetime2
+                  presentation="date"
+                  formControlName="date"
+                  [(ngModel)]="voteDate"
+                ></ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-item>
+        </div>
+        <br />
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div>Start Time</div>
+            <div class="h5rem">
+              <ion-datetime
+                presentation="time"
+                formControlName="start"
+                locale="en-IN"
+              ></ion-datetime>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div>End Time</div>
+            <div class="h5rem">
+              <ion-datetime
+                presentation="time"
+                formControlName="end"
+                locale="en-IN"
+              ></ion-datetime>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div>
+          <ion-button color="primary" (click)="setDate()"
+            >Set Election Time and Date</ion-button
+          >
+        </div>
+      </div>
+    </ion-content>
+    <!-- </div> -->
+  </div>
+</ion-content>

@@ -11,6 +11,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "16.13.2"
+  },
   "private": true,
   "dependencies": {
     "@angular-material-components/datetime-picker": "^7.0.1",

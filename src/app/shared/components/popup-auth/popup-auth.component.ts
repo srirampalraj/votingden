@@ -19,13 +19,9 @@ export class PopupAuthComponent implements OnInit {
   ) {}
 
   async checkCode() {
-    // this.auth.authTwostep(this.data.from, this.authCode).then((value) => {
-    //   console.log(value);
-    // });
-    // if (await this.auth.authTwostep(this.data.from, this.authCode)) {
-    //   console.log('true');
-    // } else {
-    //   console.log('false');
-    // }
+    if (this.auth.authTwostep(this.data.from, this.authCode)) {
+      this.dialogRef.close();
+      // this.dialogRef.
+    }
   }
 }

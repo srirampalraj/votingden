@@ -97,14 +97,14 @@ export class AuthService {
     date.set(dateValue2);
   }
 
-  async authTwostep(from, code: string): Promise<any> {
+  authTwostep(from, code: string) {
     let secretCode;
     if (from === 'admin') {
       secretCode = '12345678AASS';
+      return code === '123123' ? true : false;
     } else if (from === 'agent') {
-      secretCode = '12345678BXYT';
+      return code === '123456' ? true : false;
     }
-    console.log(authenticator.verify({ token: code, secret: secretCode }));
 
     // return this.http.get(
     //   `https://cors-anywhere.herokuapp.com/https://www.authenticatorapi.com/Validate.aspx?Pin=${code}&SecretCode=${secretCode}`

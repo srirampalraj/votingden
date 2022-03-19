@@ -30,11 +30,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { PopupAuthComponent } from './shared/components/popup-auth/popup-auth.component';
+import { ConfirmPopupComponent } from './shared/components/confirm-popup/confirm-popup.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  declarations: [AppComponent, PopupAuthComponent],
+  declarations: [AppComponent, PopupAuthComponent, ConfirmPopupComponent],
   entryComponents: [],
   imports: [
     NgxMaskModule.forRoot(),

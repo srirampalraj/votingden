@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     this.auth.dateobs.subscribe((data) => {
       if (data !== undefined && data !== null && data !== '') {
         console.log(data, mom().toISOString());
-        this.form.get('start').setValue(new Date().toISOString);
+        this.form.get('start').setValue(mom().format('hh:mm a'));
         this.form.get('start').updateValueAndValidity();
         this.form.get('end').setValue(new Date(data.end).toISOString());
         this.form.get('end').updateValueAndValidity();

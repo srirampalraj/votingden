@@ -1,98 +1,103 @@
 <div *ngIf="loading"></div>
 <ion-content>
-  <div
-    style="padding: 2rem; margin: 1rem; background: white"
-    [formGroup]="addUserForm"
-  >
+  <div>
     <div>
-      <mat-form-field>
-        <ngx-mat-file-input
-          #photo
-          formControlName="photo"
-          placeholder="Select photo"
-          type="file"
-          class="black"
-          accept=".jpeg"
-          (change)="eventPhoto($event)"
-        ></ngx-mat-file-input>
-        <button
-          mat-icon-button
-          matSuffix
-          class="black"
-          *ngIf="!photo.empty"
-          (click)="photo.clear($event)"
-        >
-          <mat-icon class="material-icons-outlined"> close </mat-icon>
-        </button>
-        <div *ngIf="progressValue | async as val">
-          <progress
-            type="warning"
-            [value]="val"
-            style="height: 7mm; width: 50%"
-            max="100"
-          ></progress>
-          <br />
-          <span
-            *ngIf="val < 100"
-            style="color: rgb(255, 60, 0); font-size: 17px; font-weight: 410"
-            >{{ val | number }}% </span
-          ><span
-            *ngIf="val == 100"
-            style="color: rgb(1, 153, 34); font-size: 17px; font-weight: 410"
-            >Completed !</span
-          >
-        </div>
-      </mat-form-field>
-      <mat-error *ngIf="addUserForm.get('photo').hasError('maxContentSize')">
-        The total size must not exceed
-        {{
-          addUserForm.get("photo")?.getError("maxContentSize").maxSize
-            | byteFormat
-        }}
-        ({{
-          addUserForm.get("photo")?.getError("maxContentSize").actualSize
-            | byteFormat
-        }}).
-      </mat-error>
+      <img src="assets/images/add-user.svg" alt="cfhg" />
     </div>
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Full name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Aadhar number</mat-label>
-        <input matInput mask="0000 0000 0000" formControlName="aadhar" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Voter ID</mat-label>
-        <input matInput mask="SSSSS0000S" formControlName="epicid" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Mobile number</mat-label>
-        <input matInput mask="00000 00000" formControlName="mobile" />
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>DOB (DD/MM/YYYY)</mat-label>
-        <input matInput mask="00/00/0000" formControlName="dob" />
-      </mat-form-field>
-    </div>
-    <button
-      mat-raised-button
-      type="submit"
-      [disabled]="addUserForm.invalid"
-      (click)="log(addUserForm.value, photo)"
+    <div
+      style="padding: 2rem; margin: 1rem; background: white"
+      [formGroup]="addUserForm"
     >
-      Submit
-    </button>
+      <div>
+        <mat-form-field>
+          <ngx-mat-file-input
+            #photo
+            formControlName="photo"
+            placeholder="Select photo"
+            type="file"
+            class="black"
+            accept=".jpeg"
+            (change)="eventPhoto($event)"
+          ></ngx-mat-file-input>
+          <button
+            mat-icon-button
+            matSuffix
+            class="black"
+            *ngIf="!photo.empty"
+            (click)="photo.clear($event)"
+          >
+            <mat-icon class="material-icons-outlined"> close </mat-icon>
+          </button>
+          <div *ngIf="progressValue | async as val">
+            <progress
+              type="warning"
+              [value]="val"
+              style="height: 7mm; width: 50%"
+              max="100"
+            ></progress>
+            <br />
+            <span
+              *ngIf="val < 100"
+              style="color: rgb(255, 60, 0); font-size: 17px; font-weight: 410"
+              >{{ val | number }}% </span
+            ><span
+              *ngIf="val == 100"
+              style="color: rgb(1, 153, 34); font-size: 17px; font-weight: 410"
+              >Completed !</span
+            >
+          </div>
+        </mat-form-field>
+        <mat-error *ngIf="addUserForm.get('photo').hasError('maxContentSize')">
+          The total size must not exceed
+          {{
+            addUserForm.get("photo")?.getError("maxContentSize").maxSize
+              | byteFormat
+          }}
+          ({{
+            addUserForm.get("photo")?.getError("maxContentSize").actualSize
+              | byteFormat
+          }}).
+        </mat-error>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Full name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Aadhar number</mat-label>
+          <input matInput mask="0000 0000 0000" formControlName="aadhar" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Voter ID</mat-label>
+          <input matInput mask="SSSSS0000S" formControlName="epicid" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Mobile number</mat-label>
+          <input matInput mask="00000 00000" formControlName="mobile" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>DOB (DD/MM/YYYY)</mat-label>
+          <input matInput mask="00/00/0000" formControlName="dob" />
+        </mat-form-field>
+      </div>
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="addUserForm.invalid"
+        (click)="log(addUserForm.value, photo)"
+      >
+        Submit
+      </button>
+    </div>
   </div>
 </ion-content>
 
